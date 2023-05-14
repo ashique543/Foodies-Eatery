@@ -21,6 +21,7 @@ include('../inc/login_ckeck.php');
     <?php
     include('../inc/header.php');
     ?>
+    
     <div class="category_back">
         <div class="category" id="category">
             <div class="category_items">
@@ -51,7 +52,18 @@ include('../inc/login_ckeck.php');
     include('../inc/featured.php');
     ?>
 
-
+<div class="about_body">
+    <h1 id="about_heading">Hi! We are Foodies Eatery</h1>
+    <div class="about_line"></div>
+    <p id="about_desc">
+    Launched in 2023, Our technology platform connects customers, restaurant partners and delivery partners, serving their multiple needs. Customers use our platform to search and discover restaurants, read and write customer generated reviews and view and upload photos, order food delivery, book a table and make payments while dining-out at restaurants. On the other hand, we provide restaurant partners with industry-specific marketing tools which enable them to engage and acquire customers to grow their business while also providing a reliable and efficient last mile delivery service. . We also provide our delivery partners with transparent and flexible earning opportunities.<br><br>
+    
+         <b>Blog</b>: <br><br>
+    
+         Work with us:<br>
+    The right people got us here, and we are on the lookout for those who will bring us closer to our vision, and make a difference.<br><br>
+    </p>
+    </div>
 
     <?php
     include('../inc/footer.php');

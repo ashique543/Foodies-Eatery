@@ -9,8 +9,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $email = mysqli_real_escape_string($conn, $email);
     $password = mysqli_real_escape_string($conn, $password);
 }
-echo $email;
-echo $password;
 
 $sql="select * from login where E_mail='$email'";
 $result=mysqli_query($conn,$sql);
@@ -23,6 +21,7 @@ $db_user_address=$row['Address'];
 $db_user_pincode=$row['Pincode'];
 $db_user_phone=$row['Phone_number'];
 $db_user_email=$row['E_mail'];
+$db_user_img=$row['Image'];
 
 session_start();
 
@@ -37,6 +36,7 @@ else{
         $_SESSION['user_pincode']=$db_user_pincode;
         $_SESSION['user_phone']=$db_user_phone;
         $_SESSION['user_email']=$db_user_email;
+        $_SESSION['user_image']=$db_user_img;
         header("location: home.php");
     }
     else{

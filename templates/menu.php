@@ -54,7 +54,7 @@ include('../inc/connection.php');
             </div>
 
             <section id="table_section">
-                <!--for demo wrap-->
+                
                 <table id="menu_table" cellpadding="0" cellspacing="0" border="0">
                     <thead class="tbl-header">
                         <tr>

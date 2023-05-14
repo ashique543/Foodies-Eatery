@@ -181,6 +181,16 @@ body::after{
   border-radius: 15px;
   box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.24);
 }
+
+.swal-title {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.swal-text {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+}
+
   @media(max-width: 500px){
     .contaner{
         grid-template-columns: repeat(1, 1fr);

@@ -88,8 +88,8 @@ body::after{
     color: white;
 }
 .category_items_box:hover img{
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
 }
 .category_items_box:hover p{
     opacity: 0.5;
@@ -97,14 +97,14 @@ body::after{
 .circle {
     margin: 20px;
     margin-bottom: 0px;
-    min-width: 80px;
-    height: 80px;
+    min-width: 90px;
+    height: 90px;
     border-radius: 100%;
 }
 
 .circle img {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     transition: 0.3s ease;
     border-radius: 100%;
 }
@@ -258,7 +258,7 @@ svg {
         padding-bottom: 10px;
     }
     body::after{
-      background-size: 100%;
+      background-size: 150%;
   }
 }
 
@@ -407,4 +407,57 @@ svg {
   }
 
   
-  
+  .about_body
+{
+    padding-top: 50px;
+    padding-left: 25px;
+    color: white;
+}
+#about_heading
+{
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow:  0 2px 4px rgba(0, 0, 0, 0.403), 0 2px 5px rgba(0, 0, 0, 0.24);
+
+}
+.about_line
+{
+    width: 125px;
+    height: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.403), 0 2px 10px rgba(0, 0, 0, 0.24);
+}
+#about_desc
+{
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px;
+    margin: 5px;
+    margin-top: 10px;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    line-height: 5vh;
+    font-weight: 100;
+    background-color: rgba(0, 0, 0, 0.292);
+    font-size: 20px;
+    text-shadow:  0 2px 4px rgba(0, 0, 0, 0.403), 0 2px 5px rgba(0, 0, 0, 0.24);
+}
+@media(max-width: 500px){
+  .about_body
+  {
+      padding: 5px;
+      color: white;
+  }
+  #about_heading
+{
+    font-size: 25px;
+
+}
+#about_desc{
+  font-size: 16px;
+  margin: 0;
+  padding: 5px;
+  line-height: 3vh;
+}
+}

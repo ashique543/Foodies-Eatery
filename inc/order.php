@@ -20,11 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql="INSERT INTO `order`(`Customer_name`, `User_id`, `Resturent_id`, `Food_id`, `Total_price`) VALUES ('$customer_name','$user_id','$resturent_id','$food_id','$price')";
             if(mysqli_query($conn, $sql)){
                 unset($_SESSION['cart']);
-                echo "<script>alert('Your Order has being placed');
+                $_SESSION['status'] = "Your Order has being placed";
+                $_SESSION['status_icon'] = "success";
+                echo "<script>
                 window.location.href='../templates/cart.php';
                 </script>";
             }else{
-                echo "<script>alert('Something went wrong tryagain');
+                $_SESSION['status'] = "Something went wrong tryagain";
+                $_SESSION['status_icon'] = "error";
+                echo "<script>
                 window.location.href='../templates/cart.php';
                 </script>";
             }

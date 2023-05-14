@@ -1,5 +1,6 @@
 <?php
 include('../inc/login_ckeck.php');
+include('../inc/connection.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +15,7 @@ include('../inc/login_ckeck.php');
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -25,15 +27,20 @@ include('../inc/login_ckeck.php');
         <aside>
             <div class="navbar">
                 <div class="user-logo">
-                    <img src="../assets/img/pro.jpg">
+                    <?php
+                    if ($_SESSION['user_image'] != "") {
+                    ?>
+                        <img src="..<?php echo $_SESSION['user_image'] ?>" width=150 height=150 alt="">
+                    <?php
+                    } else { ?>
+                        <img src="../assets/img/pro.jpg" width=150 height=150 alt="">
+                    <?php } ?>
                 </div>
                 <!--nav elements-->
                 <nav id="profile_nav">
                     <ul>
                         <li class="selectedLink" name="edit">Edit Profile</li>
                         <li name="orders">Your Orders</li>
-                        <li name="settings">Settings</li>
-                        <li name="notifications">Favorite Orders</li>
                         <a href="./home.php">
                             <li><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
@@ -59,13 +66,26 @@ include('../inc/login_ckeck.php');
                     <center>
                         <!-- code for editing page -->
                         <div class="upload">
-                            <img src="../assets/img/pro.jpg" width=150 height=150 alt="">
-                            <div class="round">
-                                <input type="file">
-                                <i class="fa fa-camera" style="color: #fff;"></i>
-                            </div>
+                            <?php
+                            if ($_SESSION['user_image'] != "") {
+                            ?>
+                                <img src="..<?php echo $_SESSION['user_image'] ?>" width=150 height=150 alt="">
+                            <?php
+                            } else { ?>
+                                <img src="../assets/img/pro.jpg" width=150 height=150 alt="">
+                            <?php } ?>
+                            <form action="../inc/profile_update.php" method="post" enctype="multipart/form-data">
+                                <div class="round">
+                                    <input type="file" name="image_data">
+                                    <i class="fa fa-camera" style="color: #fff;"></i>
+                                </div>
+                                <input type="hidden" name="form_type" value="img_form">
+                                <input type="hidden" name="id" value="<?php echo $_SESSION['user_id'] ?>">
+                                <button name="img_submit" style="float: left; margin: 10px 18.2%;"><b>Upload</b></button>
+                            </form>
                         </div>
 
+                        <br>
                         <p><?php echo $_SESSION['user_name'] ?></p>
                         <p style="font-size: 14px;"><?php echo $_SESSION['user_email'] ?><br>
                             You can update bellow Data</p>
@@ -90,7 +110,54 @@ include('../inc/login_ckeck.php');
             <!-- rest pages-->
             <div class="card orders">
                 <div class="title"><b>Order History</b></div>
-                <div class="content">Content goes here</div>
+                <div class="content">
+                <section id="table_section">
+                
+                <table id="menu_table" cellpadding="0" cellspacing="0" border="0">
+                    <thead class="tbl-header">
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Restaurent Name</th>
+                            <th>Food</th>
+                            <th>Price</th>
+                            <th>Date-Time</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbl-content">
+                    <?php
+                    $id=$_SESSION['user_id'];
+
+                    $sql="SELECT * FROM `order` WHERE User_id=$id";
+                    $result=mysqli_query($conn,$sql);
+                    if(mysqli_num_rows($result)>0){
+                        while($row= mysqli_fetch_assoc($result)){
+                            $res_id=$row["Resturent_id"];
+                            $sql2="SELECT Resturents_name FROM `resturent` WHERE Resturent_id=$res_id";
+                            $result2=mysqli_query($conn,$sql2);
+                            $row2= mysqli_fetch_assoc($result2);
+
+                            $food_id=$row["Food_id"];
+                            $sql3="SELECT Food_name FROM `food` WHERE Food_id=$food_id";
+                            $result3=mysqli_query($conn,$sql3);
+                            $row3= mysqli_fetch_assoc($result3)
+                            ?>
+                            <tr>
+                                <td><?php echo $row["Order_id"];?></td>
+                                <td><?php echo $row2["Resturents_name"];?></td>
+                                <td><?php echo $row3["Food_name"];?></td>
+                                <td><?php echo $row["Total_price"];?> /-</td>
+                                <td><?php echo $row["Date_time"];?></td>
+                                
+                            </tr>
+                            <?php
+                        }
+                    }
+
+                    ?>  
+                    </tbody>
+                </table>
+            </section>
+                </div>
             </div>
             <div class="card settings">
                 <div class="title"><b>Your Cart</b></div>
@@ -130,6 +197,43 @@ include('../inc/login_ckeck.php');
     </script>
     <script src="../assets/js/side_nav.js"></script>
     <script src="../assets/js/user_prof_toggle.js"></script>
+
+    <script src="../assets/js/sweetalert.js"></script>
+
+    <?php
+    if (isset($_SESSION['status'])) {
+    ?>
+        <script>
+            swal({
+                title: "<?php echo $_SESSION['status_title']; ?>",
+                text: "<?php echo $_SESSION['status']; ?>",
+                icon: "<?php echo $_SESSION['status_icon']; ?>",
+                button: "Ok",
+            });
+        </script>
+    <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['status_icon']);
+    }
+    ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+        $(document).ready(function() {
+            $('#menu_table').DataTable({
+                "pagingType": "full_numbers",
+                "lengthChange": false,
+                "info": false,
+                "lengthMenu": [
+                    [8],
+                    [8]
+                ],
+                responsive: true,
+                "searching": false
+            });
+
+        });
+    </script>
 </body>
 
 </html>

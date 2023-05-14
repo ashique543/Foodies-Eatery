@@ -3,23 +3,6 @@ include('../inc/login_ckeck.php');
 include('../inc/connection.php');
 ?>
 
-<?php
-
-if (isset($_SESSION['status'])) {
-?>
-    <script>
-        swal({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success",
-            button: "Aww yiss!",
-        });
-    </script>
-<?php
-    unset($_SESSION['status']);
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -132,6 +115,24 @@ if (isset($_SESSION['status'])) {
     <script src="../assets/js/side_nav.js"></script>
     <script src="../assets/js/user_prof_toggle.js"></script>
     <script src="../assets/js/sweetalert.js"></script>
+
+    <?php
+    if (isset($_SESSION['status'])) {
+    ?>
+        <script>
+            swal({
+                title: "Done",
+                text: "<?php echo $_SESSION['status']; ?>",
+                icon: "<?php echo $_SESSION['status_icon']; ?>",
+                button: "Ok",
+            });
+        </script>
+    <?php
+        unset($_SESSION['status']);
+        unset($_SESSION['status_icon']);
+    }
+    ?>
+    
 </body>
 
 </html>

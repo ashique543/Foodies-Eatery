@@ -24,7 +24,7 @@ html {
 }
 
 body {
-	background:#3c8b94;
+	background: #3c8b94;
 }
 
 body::after {
@@ -99,53 +99,64 @@ body::after {
 	text-align: justify;
 }
 
- select{
+select {
 	border: 0px;
-    background: linear-gradient(90deg, #d8b5ff, #1eae98);
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
-    background-position: left, 0% 0%;
-    background-size: 200%;
-    color: white;
-    height: 30px;
-    padding: 5px 5px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    font-size: 17px;
-    transition: all 0.3s;
-    cursor: pointer;
- }
- select:hover {
-    transform: scale(1.1);
+	background: linear-gradient(90deg, #d8b5ff, #1eae98);
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+	background-position: left, 0% 0%;
+	background-size: 200%;
+	color: white;
+	height: 30px;
+	padding: 5px 5px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 17px;
+	transition: all 0.3s;
+	cursor: pointer;
 }
- select option{
+
+select:hover {
+	transform: scale(1.1);
+}
+
+select option {
 	color: black;
- }
+}
 
 
 button {
-    border: 0px;
-    background: linear-gradient(90deg, #d8b5ff, #1eae98);
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
-    background-position: left, 0% 0%;
-    background-size: 200%;
-    color: white;
-    height: 40px;
-    padding: 5px 20px;
-    font-family: 'Montserrat', sans-serif;
-    border-radius: 10px;
-    font-weight: 300;
-    font-size: 17px;
-    transition: all 0.3s;
-    cursor: pointer;
+	border: 0px;
+	background: linear-gradient(90deg, #d8b5ff, #1eae98);
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+	background-position: left, 0% 0%;
+	background-size: 200%;
+	color: white;
+	height: 40px;
+	padding: 5px 20px;
+	font-family: 'Montserrat', sans-serif;
+	border-radius: 10px;
+	font-weight: 300;
+	font-size: 17px;
+	transition: all 0.3s;
+	cursor: pointer;
 }
 
 button:hover {
-    transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 
 .add {
 	width: 67%;
+}
+
+.swal-title {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.swal-text {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
 }
 
 @media(max-width: 500px) {
@@ -163,5 +174,5 @@ button:hover {
 	.product p {
 		font-size: 16px;
 	}
-	
+
 }

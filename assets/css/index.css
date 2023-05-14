@@ -279,3 +279,10 @@ input::after{
         padding: 0 18px;
     }
 }
+.extralink{
+    display: flex;
+    justify-content: space-between;
+}
+.extralink a{
+    margin: 0px 100px;
+}

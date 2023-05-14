@@ -59,7 +59,13 @@ if (isset($_SESSION['user_id'])) {
                     <h1>Hello, Friend!</h1>
                     <p>Enter your personal details and start journey with us</p>
                     <p><?php if(isset($_SESSION['flag']) and $_SESSION['flag']==1){echo ($_SESSION['message']);}$_SESSION['flag']=0;?></p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <button class="ghost" id="signUp">Sign Up</button><br>
+                    <div class="extralink">
+                     <a href="#">Admin Log-in</a>
+                    <a href="#">Business</a>   
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>
