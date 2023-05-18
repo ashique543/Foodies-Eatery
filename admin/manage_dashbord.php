@@ -1,6 +1,6 @@
 <?php
+include('admin_login_check.php');
 include('../inc/connection.php');
-session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST["food_data"])) {
@@ -38,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if (isset($_POST["remove_restuarent"])){
-        $id=$_POST['item'];
-        $sql="DELETE FROM resturent WHERE Resturent_id=$id;";
+    if (isset($_POST["remove_restuarent"])) {
+        $id = $_POST['item'];
+        $sql = "DELETE FROM resturent WHERE Resturent_id=$id;";
         if (mysqli_query($conn, $sql)) {
             $_SESSION['status'] = "Data Deleted Successfully";
             $_SESSION['status_title'] = "Done";
@@ -51,9 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if (isset($_POST["remove_food"])){
-        $id=$_POST['item'];
-        $sql="DELETE FROM food WHERE Food_id=$id;";
+    if (isset($_POST["remove_food"])) {
+        $id = $_POST['item'];
+        $sql = "DELETE FROM food WHERE Food_id=$id;";
         if (mysqli_query($conn, $sql)) {
             $_SESSION['status'] = "Data Deleted Successfully";
             $_SESSION['status_title'] = "Done";
@@ -64,12 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if (isset($_POST["restaurant_data"])){
-        
-        $restaurent_name=$_POST['resturentName'];
-        $phone=$_POST['resturentPhn'];
-        $address=$_POST['resturentAdd'];
-        $pincode=$_POST['resturentPin'];
+    if (isset($_POST["restaurant_data"])) {
+
+        $restaurent_name = $_POST['resturentName'];
+        $phone = $_POST['resturentPhn'];
+        $address = $_POST['resturentAdd'];
+        $pincode = $_POST['resturentPin'];
 
         $sql = "SELECT MAX(Resturent_id) FROM `resturent`";
         $result = mysqli_query($conn, $sql);
@@ -98,10 +98,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-}
- else {
+
+
+
+    if (isset($_POST["login_form"])) {
+
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        $email = mysqli_real_escape_string($conn, $email);
+        $password = mysqli_real_escape_string($conn, $password);
+
+        $sql = "select * from admin where Email='$email'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+
+        $db_admin_id = $row['Admin_id'];
+        $db_admin_name = $row['Name'];
+        $db_admin_password = $row['Password'];
+        $db_admin_email = $row['Email'];
+
+        if(isset($_SESSION['admin_id'])){
+            header("location: /Foodies_Eatery/admin/index.php");
+        }else{
+            if(password_verify($password,$db_admin_password)){
+                $_SESSION['admin_id']=$db_admin_id;
+                $_SESSION['admin_name']=$db_admin_name;
+                $_SESSION['admin_email']=$db_admin_email;
+                header("location: /Foodies_Eatery/admin/index.php");
+            }
+            else{
+                header("location: /Foodies_Eatery/admin/login.php");
+            }
+        }
+    }
+} else {
     echo "<script>
                 window.location.href='add_food.php';
                 </script>";
 }
-?>

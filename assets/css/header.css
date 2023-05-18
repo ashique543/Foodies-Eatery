@@ -34,7 +34,23 @@
     padding: 12px;
     font-weight: 100;
 }
-
+.login_div{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+}
+.login_div svg{
+    color: white;
+}
+.login_div a{
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    padding: 0px 5px;
+    text-align: center;
+    align-items: center;
+}
 .nav .bar ul {
     padding: 20px;
     background: linear-gradient(50deg,#667EEA,#764BA2,#667EEA,#764BA2,#667EEA);

@@ -35,4 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['flag'] = 1;
         header("location: /Foodies_Eatery/");
     }
+}else{
+    header("location: /Foodies_Eatery/");
 }

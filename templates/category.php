@@ -1,5 +1,6 @@
 <?php
-include('../inc/login_ckeck.php');
+session_start();
+include('../inc/connection.php');
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ include('../inc/login_ckeck.php');
         $category = array("Indian", "Chinese", "Italian", "Spicy", "Healthy", "Fries", "Chaat", "Sweet and Salty", "Sweet and Sour", "Sweets");
         $num = count($category);
         for ($i = 0; $i <= $num - 1; $i++) {
-            if(password_verify($category[$i],$_GET["category"])){
+            if (password_verify($category[$i], $_GET["category"])) {
                 $data = $category[$i];
             }
         }
@@ -28,6 +29,7 @@ include('../inc/login_ckeck.php');
     }
     echo "<title>Category | {$data}</title>";
     ?>
+    
 </head>
 
 <body>
@@ -36,31 +38,145 @@ include('../inc/login_ckeck.php');
     ?>
     <div class="items">
         <?php
-        if (isset($_GET["data"])) {
-            $data = $_GET["data"];
-        }
         echo "<h1>{$data}</h1>";
+        $hash_category = password_hash($data, PASSWORD_DEFAULT);
         ?>
+        <div class="filter">
+         <form action="category.php" method="get">
+            <input type="hidden" name="category" value="<?php echo $hash_category; ?>">
+            <input type="number" name="pin" placeholder="Enter Pin to Search" required>
+            <input type="submit" name="pin_btn" value="Search">
+        </form>
+        <form action="category.php" method="get">
+            <input type="hidden" name="category" value="<?php echo $hash_category; ?>">
+            <input type="hidden" name="low_high" value="low_high">
+            <input type="submit" name="pin_btn" value="Low to High Price">
+        </form>
+        <form action="category.php" method="get">
+            <input type="hidden" name="category" value="<?php echo $hash_category; ?>">
+            <input type="hidden" name="high_low" value="high_low">
+            <input type="submit" name="pin_btn" value="High to Low Price">
+        </form>    
+        </div>
+        
         <div class="card_contaner">
             <?php
-            for ($i = 0; $i <= 100; $i++) {
-                echo '<div class="card">
-      <div class="card-img"></div>
-      <div class="card-info">
-          <p class="text-title">Product title </p>
-          <p class="text-body">Product description and details</p>
-      </div>
-      <div class="card-footer">
-          <span class="text-title">$499.49</span>
-          <div class="card-button">
-          <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-        </svg></a>
-          </div>
-      </div>
-  </div>';
+            if (isset($_GET['category']) and !isset($_GET['pin']) and !isset($_GET['low_high']) and !isset($_GET['high_low'])) {
+                $sql = "SELECT * FROM `food` WHERE Category='$data'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                        <div class="card">
+                            
+                            <img class="card-img" src="../assets/img/food_img/<?php echo $row["Food_id"];?>.jpg">
+                            
+                            <div class="card-info">
+                                <p class="text-title"><?php echo $row["Food_name"]; ?></p>
+                                <p class="text-body"><?php echo $row["Description"]; ?></p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="text-title"><?php echo $row["Price"]; ?>/-</span>
+                                <div class="card-button">
+                                    <a href="./food.php?id=<?php echo $row['Food_id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </div>
+            <?php
+                    }
+                }
             }
             ?>
+
+
+            <?php
+            if (isset($_GET['category']) and isset($_GET['pin']) and !isset($_GET['low_high'])) {
+                $pin = $_GET['pin'];
+                $sql = "SELECT * FROM `food` WHERE Category='$data' AND Resturent_id IN (SELECT Resturent_id FROM resturent WHERE Pincode='$pin')";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                        <div class="card">
+                        <img class="card-img" src="../assets/img/food_img/<?php echo $row["Food_id"];?>.jpg">
+                            <div class="card-info">
+                                <p class="text-title"><?php echo $row["Food_name"]; ?></p>
+                                <p class="text-body"><?php echo $row["Description"]; ?></p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="text-title"><?php echo $row["Price"]; ?>/-</span>
+                                <div class="card-button">
+                                    <a href="./food.php?id=<?php echo $row['Food_id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </div>
+            <?php
+                    }
+                }
+            }
+            ?>
+
+            <?php
+            if (isset($_GET['category']) and isset($_GET['low_high'])) {
+                $sql = "SELECT * FROM `food` WHERE Category='$data' ORDER BY `food`.`Price` ASC";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                        <div class="card">
+                        <img class="card-img" src="../assets/img/food_img/<?php echo $row["Food_id"];?>.jpg">
+                            <div class="card-info">
+                                <p class="text-title"><?php echo $row["Food_name"]; ?></p>
+                                <p class="text-body"><?php echo $row["Description"]; ?></p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="text-title"><?php echo $row["Price"]; ?>/-</span>
+                                <div class="card-button">
+                                    <a href="./food.php?id=<?php echo $row['Food_id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </div>
+            <?php
+                    }
+                }
+            }
+            ?>
+
+<?php
+            if (isset($_GET['category']) and isset($_GET['high_low'])) {
+                $sql = "SELECT * FROM `food` WHERE Category='$data' ORDER BY `food`.`Price` DESC";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                        <div class="card">
+                        <img class="card-img" src="../assets/img/food_img/<?php echo $row["Food_id"];?>.jpg">
+                            <div class="card-info">
+                                <p class="text-title"><?php echo $row["Food_name"]; ?></p>
+                                <p class="text-body"><?php echo $row["Description"]; ?></p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="text-title"><?php echo $row["Price"]; ?>/-</span>
+                                <div class="card-button">
+                                    <a href="./food.php?id=<?php echo $row['Food_id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </div>
+            <?php
+                    }
+                }
+            }
+            ?>
+
+
         </div>
     </div>
     <?php

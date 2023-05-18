@@ -1,3 +1,6 @@
+<?php
+include('admin_login_check.php');
+?>
 <!DOCTYPE html>
 <html land="en" dir="ltr">
 <head>
@@ -7,6 +10,7 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo.jpg" />
 	  <link rel="stylesheet" href="./css/dashboard.css">
     <link rel="stylesheet" href="./css/restaurent.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -19,7 +23,7 @@
     </div>
       <ul class="nav-links"> 
         <li>
-        <a href="dashboard.php" onclick="toggleMenu(); " >
+        <a href="index.php" onclick="toggleMenu(); " >
             <i class='bx bx-grid-alt' ></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -61,7 +65,7 @@
           </a>
         </li>
         <li class="log_out">
-          <a href="#">
+          <a href="admin_logout.php">
             <i class='bx bx-log-out'></i>
             <span class="links_name">Log out</span>
           </a>

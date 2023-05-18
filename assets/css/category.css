@@ -59,8 +59,8 @@ body::after{
 
 .card {
     font-family: 'Montserrat', sans-serif;
-    width: 190px;
-    height: 254px;
+    width: 200px;
+    height: 300px;
     border-radius: 10px;
     padding: 0.8em;
     margin: 20px;
@@ -72,7 +72,6 @@ body::after{
 }
 
 .card-img {
-    background-color: #ffcaa6;
     height: 40%;
     width: 100%;
     border-radius: .5rem;
@@ -90,9 +89,11 @@ svg {
 }
 
 .card-footer {
-    width: 100%;
+    width: 88%;
     display: flex;
     justify-content: space-between;
+    bottom: 0px;
+    position: absolute;
     align-items: center;
     padding-top: 10px;
     border-top: 1px solid #ddd;
@@ -138,7 +139,7 @@ svg {
     }
     .card {
         width: 95px;
-        height: 140px;
+        height: 200px;
         padding: 0.5em;
         margin: 7px;
     }
@@ -164,4 +165,27 @@ svg {
     .card_contaner {
         grid-template-columns: repeat(3, 0.3fr);
     }
+}
+.filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0px;
+}
+.filter form{
+    padding: 0px 15px;
+}
+.filter input{
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.403), 0 2px 5px rgba(0, 0, 0, 0.24);
+    padding: 10px;
+    font-size: 15px;
+    outline: none;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.51);
+    border-radius: 30px;
+    color: white;
+}
+.filter input::placeholder{
+    color: white;
 }

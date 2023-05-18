@@ -1,5 +1,5 @@
 <?php
-include('../inc/login_ckeck.php');
+session_start();
 ?>
 
 <!DOCTYPE html>

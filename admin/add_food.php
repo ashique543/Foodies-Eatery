@@ -1,7 +1,6 @@
 <?php
 include("sidebar.php");
 include('../inc/connection.php');
-session_start();
 ?>
 <section class="home-section">
 
@@ -12,8 +11,10 @@ session_start();
         </div>
 
         <div class="profile-details">
-            <img src="me.jpeg" alt="">
-            <span class="admin_name">Swapnendu Paul</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+            </svg>
+            <span class="admin_name"><?php echo $_SESSION['admin_name']; ?></span>
 
         </div>
     </nav>
@@ -40,9 +41,9 @@ session_start();
                         $category = array("Indian", "Chinese", "Italian", "Spicy", "Healthy", "Fries", "Chaat", "Sweet and Salty", "Sweet and Sour", "Sweets");
                         $num = count($category);
                         for ($i = 0; $i <= $num - 1; $i++) {
-                            ?>
+                        ?>
                             <option value="<?php echo $category[$i]; ?>"><?php echo $category[$i]; ?></option>
-                                <?php
+                        <?php
                         }
                         ?>
                     </select>
@@ -57,7 +58,7 @@ session_start();
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                         ?>
-                        <option value="<?php echo $row["Resturent_id"]; ?>"><?php echo $row["Resturents_name"]; ?></option>
+                                <option value="<?php echo $row["Resturent_id"]; ?>"><?php echo $row["Resturents_name"]; ?></option>
                         <?php
                             }
                         }
@@ -423,22 +424,22 @@ session_start();
 </script>
 <script src="../assets/js/sweetalert.js"></script>
 
-    <?php
-    if (isset($_SESSION['status'])) {
-    ?>
-        <script>
-            swal({
-                title: "<?php echo $_SESSION['status_title']; ?>",
-                text: "<?php echo $_SESSION['status']; ?>",
-                icon: "<?php echo $_SESSION['status_icon']; ?>",
-                button: "Ok",
-            });
-        </script>
-    <?php
-        unset($_SESSION['status']);
-        unset($_SESSION['status_icon']);
-    }
-    ?>
+<?php
+if (isset($_SESSION['status'])) {
+?>
+    <script>
+        swal({
+            title: "<?php echo $_SESSION['status_title']; ?>",
+            text: "<?php echo $_SESSION['status']; ?>",
+            icon: "<?php echo $_SESSION['status_icon']; ?>",
+            button: "Ok",
+        });
+    </script>
+<?php
+    unset($_SESSION['status']);
+    unset($_SESSION['status_icon']);
+}
+?>
 </body>
 
 </html>

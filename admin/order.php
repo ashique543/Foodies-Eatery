@@ -11,8 +11,10 @@ include('../inc/connection.php');
     </div>
 
     <div class="profile-details">
-      <img src="me.jpeg" alt="">
-      <span class="admin_name">Swapnendu Paul</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+      </svg>
+      <span class="admin_name"><?php echo $_SESSION['admin_name']; ?></span>
 
     </div>
   </nav><br><br><br><br>
@@ -25,6 +27,7 @@ include('../inc/connection.php');
         <th>User-ID</th>
         <th>Restaurent</th>
         <th>Food</th>
+        <th>Quantity</th>
         <th>Price</th>
         <th>Date-Time</th>
       </tr>
@@ -53,6 +56,7 @@ include('../inc/connection.php');
             <td><?php echo $row["User_id"]; ?></td>
             <td><?php echo $row2["Resturents_name"]; ?></td>
             <td><?php echo $row3["Food_name"]; ?></td>
+            <td><?php echo $row["Quantity"]; ?></td>
             <td><?php echo $row["Total_price"]; ?> /-</td>
             <td><?php echo $row["Date_time"]; ?></td>
 
@@ -69,17 +73,17 @@ include('../inc/connection.php');
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script>
-    $(document).ready(function() {
-      $('#customers').DataTable({
-        "lengthChange": false,
-        "lengthMenu": [
-          [9],
-          [9]
-        ]
-      });
-
+  $(document).ready(function() {
+    $('#customers').DataTable({
+      "lengthChange": false,
+      "lengthMenu": [
+        [9],
+        [9]
+      ]
     });
-  </script>
+
+  });
+</script>
 <script>
   let sidebar = document.querySelector(".sidebar");
   let sidebarBtn = document.querySelector(".sidebarBtn");

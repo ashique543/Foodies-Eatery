@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['order_btn'])) {
         foreach ($_SESSION['cart'] as $key => $value) {
             $id = $value['food_id'];
+            $quantity=$value['quantity'];
             $sql = "select * from food where Food_id='$id'";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_array($result);
@@ -16,8 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $resturent_id=$row['Resturent_id'];
             $food_id=$row['Food_id'];
             $price=$row['Price'];
+            $total=$quantity*$price;
 
-            $sql="INSERT INTO `order`(`Customer_name`, `User_id`, `Resturent_id`, `Food_id`, `Total_price`) VALUES ('$customer_name','$user_id','$resturent_id','$food_id','$price')";
+            $sql="INSERT INTO `order`(`Customer_name`, `User_id`, `Resturent_id`, `Food_id`,`Quantity`, `Total_price`) VALUES ('$customer_name','$user_id','$resturent_id','$food_id','$quantity','$total')";
             if(mysqli_query($conn, $sql)){
                 unset($_SESSION['cart']);
                 $_SESSION['status'] = "Your Order has being placed";

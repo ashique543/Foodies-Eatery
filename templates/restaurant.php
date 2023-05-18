@@ -1,5 +1,4 @@
 <?php
-include('../inc/login_ckeck.php');
 include('../inc/connection.php');
 ?>
 

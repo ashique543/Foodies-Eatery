@@ -119,6 +119,7 @@ include('../inc/connection.php');
                             <th>Order Id</th>
                             <th>Restaurent Name</th>
                             <th>Food</th>
+                            <th>Quantity</th>
                             <th>Price</th>
                             <th>Date-Time</th>
                         </tr>
@@ -145,6 +146,7 @@ include('../inc/connection.php');
                                 <td><?php echo $row["Order_id"];?></td>
                                 <td><?php echo $row2["Resturents_name"];?></td>
                                 <td><?php echo $row3["Food_name"];?></td>
+                                <td><?php echo $row["Quantity"];?></td>
                                 <td><?php echo $row["Total_price"];?> /-</td>
                                 <td><?php echo $row["Date_time"];?></td>
                                 

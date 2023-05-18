@@ -1,5 +1,5 @@
 <?php
-include('../inc/login_ckeck.php');
+session_start();
 include('../inc/connection.php');
 ?>
 <?php
@@ -35,7 +35,7 @@ if (isset($_GET["id"])) {
 
     <div class="container">
         <div class="images">
-            <img src="../assets/img/Butter-Chicken1.jpg" />
+            <img src="../assets/img/food_img/<?php echo $id;?>.jpg">
         </div>
         <?php
         $sql = "SELECT Resturents_name FROM `resturent` WHERE Resturent_id=(SELECT Resturent_id FROM food WHERE Food_id='$id')";
