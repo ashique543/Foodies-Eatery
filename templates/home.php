@@ -21,7 +21,7 @@ session_start();
     <?php
     include('../inc/header.php');
     ?>
-    
+
     <div class="category_back">
         <div class="category" id="category">
             <div class="category_items">
@@ -30,13 +30,13 @@ session_start();
                 $category = array("Indian", "Chinese", "Italian", "Spicy", "Healthy", "Fries", "Chaat", "Sweet and Salty", "Sweet and Sour", "Sweets");
                 $num = count($category);
                 for ($i = 0; $i <= $num - 1; $i++) {
-                    $hash_category=password_hash($category[$i], PASSWORD_DEFAULT);
-                    echo '<div class="category_items_box"><a href="../templates/category.php?category=' . $hash_category . '">
-                   <div class="circle"><img
-                            src="https://imgs.search.brave.com/TarP4eNfmGObBD_yuGnBR4NeeMtkutrzWaQ1NYlAHbQ/rs:fit:711:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5H/UXdyakVkOG50Qlp5/ejdGNVE3dk5nSGFF/OCZwaWQ9QXBp"
-                            alt=""></div>
-                    <p>' . $category[$i] . '</p>
-                </a></div>';
+                    $hash_category = password_hash($category[$i], PASSWORD_DEFAULT);
+                ?>
+                    <div class="category_items_box"><a href="../templates/category.php?category=<?php echo $hash_category; ?>">
+                            <div class="circle"><img src="../assets/img/category_img/<?php echo $category[$i]; ?>.jpg" alt=""></div>
+                            <p><?php echo $category[$i]; ?></p>
+                        </a></div>
+                <?php
                 }
                 ?>
             </div>
@@ -52,17 +52,17 @@ session_start();
     include('../inc/featured.php');
     ?>
 
-<div class="about_body">
-    <h1 id="about_heading">Hi! We are Foodies Eatery</h1>
-    <div class="about_line"></div>
-    <p id="about_desc">
-    Launched in 2023, Our technology platform connects customers, restaurant partners and delivery partners, serving their multiple needs. Customers use our platform to search and discover restaurants, read and write customer generated reviews and view and upload photos, order food delivery, book a table and make payments while dining-out at restaurants. On the other hand, we provide restaurant partners with industry-specific marketing tools which enable them to engage and acquire customers to grow their business while also providing a reliable and efficient last mile delivery service. . We also provide our delivery partners with transparent and flexible earning opportunities.<br><br>
-    
-         <b>Blog</b>: <br><br>
-    
-         Work with us:<br>
-    The right people got us here, and we are on the lookout for those who will bring us closer to our vision, and make a difference.<br><br>
-    </p>
+    <div class="about_body">
+        <h1 id="about_heading">Hi! We are Foodies Eatery</h1>
+        <div class="about_line"></div>
+        <p id="about_desc">
+            Launched in 2023, Our technology platform connects customers, restaurant partners and delivery partners, serving their multiple needs. Customers use our platform to search and discover restaurants, read and write customer generated reviews and view and upload photos, order food delivery, book a table and make payments while dining-out at restaurants. On the other hand, we provide restaurant partners with industry-specific marketing tools which enable them to engage and acquire customers to grow their business while also providing a reliable and efficient last mile delivery service. . We also provide our delivery partners with transparent and flexible earning opportunities.<br><br>
+
+            <b>Blog</b>: <br><br>
+
+            Work with us:<br>
+            The right people got us here, and we are on the lookout for those who will bring us closer to our vision, and make a difference.<br><br>
+        </p>
     </div>
 
     <?php

@@ -1,23 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-body,
-input,
-textarea {
-  font-family: "Poppins", sans-serif;
+body{
+  background: #3c8b94;
 }
-
+body::after{
+  content : "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url('../img/order_back.jpg'); 
+  background-size: 50%;
+  background-repeat: repeat;
+  width: 100%;
+  height: 100%;
+  opacity : 0.07;
+  z-index: -1;
+  
+}
 .container {
   position: relative;
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   min-height: 100vh;
   padding: 2rem;
-  background-color: #fafafa;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -266,27 +278,7 @@ textarea.input {
   opacity: 0.3;
 }
 
-.big-circle {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: linear-gradient(to bottom, #1c90d4, #159b80);
-  bottom: 50%;
-  right: 50%;
-  transform: translate(-40%, 38%);
-}
 
-.big-circle:after {
-  content: "";
-  position: absolute;
-  width: 360px;
-  height: 360px;
-  background-color: #fafafa;
-  border-radius: 50%;
-  top: calc(50% - 180px);
-  left: calc(50% - 180px);
-}
 
 .square {
   position: absolute;

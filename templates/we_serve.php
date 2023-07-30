@@ -21,31 +21,31 @@ session_start();
     <?php
     include('../inc/header.php');
     ?>
-        <div class="category" id="category">
-            <div class="category_items">
-                <?php
+    <div class="category" id="category">
+        <div class="category_items">
+            <?php
 
-                $category = array("Indian", "Chinese", "Italian", "Spicy", "Healthy", "Fries", "Chaat", "Sweet and Salty", "Sweet and Sour", "Sweets");
-                $num = count($category);
-                for ($i = 0; $i <= $num - 1; $i++) {
-                    $hash_category=password_hash($category[$i], PASSWORD_DEFAULT);
-                    echo '<div class="category_items_box"><a href="../templates/category.php?category=' . $hash_category . '">
-                   <div class="circle"><img
-                            src="https://imgs.search.brave.com/TarP4eNfmGObBD_yuGnBR4NeeMtkutrzWaQ1NYlAHbQ/rs:fit:711:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5H/UXdyakVkOG50Qlp5/ejdGNVE3dk5nSGFF/OCZwaWQ9QXBp"
-                            alt=""></div>
-                    <p>' . $category[$i] . '</p>
-                </a></div>';
-                }
-                ?>
-            </div>
+            $category = array("Indian", "Chinese", "Italian", "Spicy", "Healthy", "Fries", "Chaat", "Sweet and Salty", "Sweet and Sour", "Sweets");
+            $num = count($category);
+            for ($i = 0; $i <= $num - 1; $i++) {
+                $hash_category = password_hash($category[$i], PASSWORD_DEFAULT);
+            ?>
+                <div class="category_items_box"><a href="../templates/category.php?category=<?php echo $hash_category; ?>">
+                        <div class="circle"><img src="../assets/img/category_img/<?php echo $category[$i]; ?>.jpg" alt=""></div>
+                        <p><?php echo $category[$i]; ?></p>
+                    </a></div>
+            <?php
+            }
+            ?>
         </div>
+    </div>
 
     <?php
     include('../inc/footer.php');
     ?>
-    
-<script src="../assets/js/side_nav.js"></script>
-<script src="../assets/js/user_prof_toggle.js"></script>
+
+    <script src="../assets/js/side_nav.js"></script>
+    <script src="../assets/js/user_prof_toggle.js"></script>
 </body>
 
 </html>

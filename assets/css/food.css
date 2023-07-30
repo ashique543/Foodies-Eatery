@@ -166,7 +166,7 @@ button:hover {
 	}
 
 	.container {
-		height: 600px;
+		height: 870px;
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
 	}

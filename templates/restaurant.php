@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../inc/connection.php');
 ?>
 
@@ -33,7 +34,7 @@ include('../inc/connection.php');
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="card">
                     <div class="card-content">
-                    <div class="card-img"></div>
+                    <img class="card-img" src="../assets/img/restaurent_img/'.$row["Resturent_id"].'.jpg">
                     <div class="card-info">
                         <p class="text-title">' . $row['Resturents_name'] . '</p>
                         <p class="text-body">' . $row['Location'] . '</p>

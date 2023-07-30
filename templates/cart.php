@@ -81,16 +81,7 @@ include('../inc/connection.php');
                     <h3 style="font-weight: 100;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
                             <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
                         </svg><?php echo $overall_total; ?> /-</h3><br>
-                    <p>18% GST will be included</p><br>
-                    <h3 style="font-weight: 100;">Price after GST </h3>
-                    <h3 style="font-weight: 100;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
-                            <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
-                        </svg>
-                        <?php
-                        $gst_inc = (0.18 * $overall_total) + $overall_total;
-                        echo $gst_inc;
-                        ?>
-                        /-</h3><br>
+
                     <form action="../inc/order.php" method="post">
                         <button name="order_btn" class="order_button" role="button">Check Out</button>
                     </form>
@@ -132,7 +123,7 @@ include('../inc/connection.php');
         unset($_SESSION['status_icon']);
     }
     ?>
-    
+
 </body>
 
 </html>

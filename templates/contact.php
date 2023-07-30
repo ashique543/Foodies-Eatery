@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,12 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
     <link rel="stylesheet" href="../assets/css/contact.css" />
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
   </head>
   <body>
+  <?php
+    include('../inc/header.php');
+    ?>
     <div class="container">
       <span class="big-circle"></span>
       <img src="img/shape.png" class="square" alt="" />
@@ -87,7 +95,11 @@
         </div>
       </div>
     </div>
-
+    <?php
+    include('../inc/footer.php');
+    ?>
+    <script src="../assets/js/side_nav.js"></script>
+    <script src="../assets/js/user_prof_toggle.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
