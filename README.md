@@ -25,47 +25,33 @@ Developed core features such as user authentication, order tracking, and the adm
 ## Screenshots
 Below are some screenshots of the website:
 
-### Home Page
-![Home Page](assets/img/Readme_img/home.jpg)
-
-### Category
-![Home Page](assets/img/Readme_img/category.jpg)
-
-### Category food
-![Home Page](assets/img/Readme_img/category_food.jpg)
-
-### Food Page
-![Home Page](assets/img/Readme_img/food.jpg)
-
-### Cart Page
-![Home Page](assets/img/Readme_img/cart.jpg)
-
-### Menu Card
-![Home Page](assets/img/Readme_img/menu.jpg)
-
-### Restaurents Page
-![Home Page](assets/img/Readme_img/Restaurents.jpg)
-
-### Profile Page
-![Home Page](assets/img/Readme_img/profile.jpg)
-
-### Admin Dashboard Page
-![Home Page](assets/img/Readme_img/dashboard/Dashboard.png)
-
-### Resturent List Page
-![Home Page](assets/img/Readme_img/dashboard/restaurent_list.png)
-
-### Food List Page
-![Home Page](assets/img/Readme_img/dashboard/Food_list.png)
-
-### Total Order Page
-![Home Page](assets/img/Readme_img/dashboard/Total_order.png)
-
-### Resturent Registration Page
-![Home Page](assets/img/Readme_img/dashboard/Register%20restaurent.png)
-
-### Add food Page
-![Home Page](assets/img/Readme_img/dashboard/Add_food.png)
-
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="assets/img/Readme_img/home.jpg" alt="Home Page" width="250px"></td>
+      <td><img src="assets/img/Readme_img/category.jpg" alt="Category" width="250px"></td>
+      <td><img src="assets/img/Readme_img/category_food.jpg" alt="Category Food" width="250px"></td>
+    </tr>
+    <tr>
+      <td><img src="assets/img/Readme_img/food.jpg" alt="Food Page" width="250px"></td>
+      <td><img src="assets/img/Readme_img/cart.jpg" alt="Cart Page" width="250px"></td>
+      <td><img src="assets/img/Readme_img/menu.jpg" alt="Menu Card" width="250px"></td>
+    </tr>
+    <tr>
+      <td><img src="assets/img/Readme_img/Restaurents.jpg" alt="Restaurants Page" width="250px"></td>
+      <td><img src="assets/img/Readme_img/profile.jpg" alt="Profile Page" width="250px"></td>
+      <td><img src="assets/img/Readme_img/dashboard/Dashboard.png" alt="Admin Dashboard" width="250px"></td>
+    </tr>
+    <tr>
+      <td><img src="assets/img/Readme_img/dashboard/restaurent_list.png" alt="Restaurant List" width="250px"></td>
+      <td><img src="assets/img/Readme_img/dashboard/Food_list.png" alt="Food List" width="250px"></td>
+      <td><img src="assets/img/Readme_img/dashboard/Total_order.png" alt="Total Order" width="250px"></td>
+    </tr>
+    <tr>
+      <td><img src="assets/img/Readme_img/dashboard/Register%20restaurent.png" alt="Restaurant Registration" width="250px"></td>
+      <td><img src="assets/img/Readme_img/dashboard/Add_food.png" alt="Add Food" width="250px"></td>
+    </tr>
+  </table>
+</div>
 
 [GitHub Link](https://github.com/ashique543/Foodies-Eatery)
