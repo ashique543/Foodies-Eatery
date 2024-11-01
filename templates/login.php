@@ -23,7 +23,7 @@ if (isset($_SESSION['user_id'])) {
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="./templates/register.php" method="post" enctype="multipart/form-data" autocomplete="off">
+            <form action="./register.php" method="post" enctype="multipart/form-data" autocomplete="off">
                 <h1>Create Account</h1>
                 <input class="signupInput" type="text" name="name" placeholder="Name" required/>
                 <input class="signupInput" type="email" name="email" placeholder="Email" required/>

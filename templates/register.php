@@ -24,16 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_query($conn, $sql)) {
             $_SESSION['message'] = "Successfully Regestered";
             $_SESSION['flag'] = 1;
-            header("location: /Foodies_Eatery/");
+            header("location: /Foodies_Eatery/templates/login.php");
         } else {
             $_SESSION['message'] = "Registration Failed Try again";
             $_SESSION['flag'] = 1;
-            header("location: /Foodies_Eatery/");
+            header("location: /Foodies_Eatery/templates/login.php");
         }
     } else {
         $_SESSION['message'] = "Password did not  match";
         $_SESSION['flag'] = 1;
-        header("location: /Foodies_Eatery/");
+        header("location: /Foodies_Eatery/templates/login.php");
     }
 }else{
     header("location: /Foodies_Eatery/");
