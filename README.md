@@ -22,6 +22,9 @@ Foodies Eatery is a responsive web application designed for seamless online food
 ## Contribution
 Developed core features such as user authentication, order tracking, and the admin dashboard for managing restaurants, food items, and business analytics.
 
+## Video of the UI
+[Click to watch the video](assets/img/Readme_img/1125.mp4)
+
 ## Screenshots
 Below are some screenshots of the website:
 
